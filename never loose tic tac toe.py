@@ -43,6 +43,7 @@ class info:
 
     words="do you want to play a game?"
 
+    turn=0
     center=False
     gamestart=False
     player=0
@@ -50,247 +51,166 @@ class info:
     board=[0,0,0,0,0,0,0,0,0]
     playermove=0
 
-def logic():
-    if info.playermove==0:
-        if info.board[1]==0 and info.board[3]==0:
-            if info.board[8]==0:
-                info.board[8]=info.computer
-                info.b9state="disabled"
-                if info.player==1:
-                    info.b9words="O"
-                else:
-                    info.b9words="X"
-            elif info.board[1]==0:
-                info.board[1]=info.computer
-                info.b2state='disabled'
-                if info.player==1:
-                    info.b2words="O"
-                else:
-                    info.b4words="X"
-            elif info.board[3]==0:
-                info.board[3]=info.computer
-                info.b4state='disabled'
-                if info.player==1:
-                    info.b4words="O"
-                else:
-                    info.b4words="X"
-        elif info.board[1]==0:
-            info.board[6]=info.computer
-            info.b7state="disabled"
-            if info.player==1:
-                info.b7words="O"
-            else:
-                info.b7words="X"
-        elif info.board[3]==0:
-            info.board[2]=info.computer
-            info.b3state="disabled"
-            if info.player==1:
-                info.b3words="O"
-            else:
-                info.b3words="X"
-    elif info.playermove==8:
-        if info.board[5]==0 and info.board[7]==0:
-            if info.board[0]==0:
-                info.board[0]=info.computer
-                info.b1state="disabled"
-                if info.player==1:
-                    info.b1words="O"
-                else:
-                    info.b1words="X"
-            elif info.board[5]==0:
-                info.board[5]=info.computer
-                info.b6state='disabled'
-                if info.player==1:
-                    info.b6words="O"
-                else:
-                    info.b6words="X"
-            elif info.board[7]==0:
-                info.board[7]=info.computer
-                info.b8state='disabled'
-                if info.player==1:
-                    info.b8words="O"
-                else:
-                    info.b8words="X"
-        elif info.board[5]==0:
-            info.board[6]=info.computer
-            info.b7state="disabled"
-            if info.player==1:
-                info.b7words="O"
-            else:
-                info.b7words="X"
-        elif info.board[7]==0:
-            info.board[2]=info.computer
-            info.b3state="disabled"
-            if info.player==1:
-                info.b3words="O"
-            else:
-                info.b3words="X"
-    elif info.playermove==2:
-        if info.board[1]==0 and info.board[5]==0:
-            if info.board[6]==0:
-                info.board[6]=info.computer
-                info.b7state="disabled"
-                if info.player==1:
-                    info.b7words="O"
-                else:
-                    info.b7words="X"
-            elif info.board[5]==0:
-                info.board[5]=info.computer
-                info.b6state='disabled'
-                if info.player==1:
-                    info.b6words="O"
-                else:
-                    info.b6words="X"
-            elif info.board[1]==0:
-                info.board[1]=info.computer
-                info.b2state='disabled'
-                if info.player==1:
-                    info.b2words="O"
-                else:
-                    info.b2words="X"
-        elif info.board[1]==0:
-            info.board[8]=info.computer
-            info.b9state="disabled"
-            if info.player==1:
-                info.b9words="O"
-            else:
-                info.b9words="X"
-        elif info.board[5]==0:
-            info.board[0]=info.computer
-            info.b1state="disabled"
-            if info.player==1:
-                info.b1words="O"
-            else:
-                info.b1words="X"
-    elif info.playermove==6:
-        if info.board[3]==0 and info.board[7]==0:
-            if info.board[2]==0:
-                info.board[2]=info.computer
-                info.b3state="disabled"
-                if info.player==1:
-                    info.b3words="O"
-                else:
-                    info.b3words="X"
-            elif info.board[3]==0:
-                info.board[3]=info.computer
-                info.b4state='disabled'
-                if info.player==1:
-                    info.b4words="O"
-                else:
-                    info.b4words="X"
-            elif info.board[7]==0:
-                info.board[7]=info.computer
-                info.b8state='disabled'
-                if info.player==1:
-                    info.b8words="O"
-                else:
-                    info.b8words="X"
-        elif info.board[3]==0:
-            info.board[8]=info.computer
-            info.b9state="disabled"
-            if info.player==1:
-                info.b9words="O"
-            else:
-                info.b9words="X"
-        elif info.board[7]==0:
-            info.board[0]=info.computer
-            info.b1state="disabled"
-            if info.player==1:
-                info.b1words="O"
-            else:
-                info.b1words="X"
-    elif info.playermove==1:
-        if info.board[2]==0:
-            info.b3state="disabled"
-            if info.player==1:
-                info.b3words="O"
-            else:
-                info.b3words="X"
-            info.board[2]=info.computer
-        elif info.board[0]==0:
-            info.b1state="disabled"
-            if info.player==1:
-                info.b1words="O"
-            else:
-                info.b1words="X"
-            info.board[0]=info.computer
-    elif info.playermove==3:
-        if info.board[4]==0:
-            if info.board[6]==0:
-                info.b7state="disabled"
-                if info.player==1:
-                    info.b7words="O"
-                else:
-                    info.b7words="X"
-                info.board[6]=info.computer
-            elif info.board[0]==0:
-                info.b1state="disabled"
-                if info.player==1:
-                    info.b1words="O"
-                else:
-                    info.b1words="X"
-                info.board[0]=info.computer
-        else:
-            info.board[5]=info.computer
-            info.b6state='disabled'
-            if info.player==1:
-                info.b6words="O"
-            else:
-                info.b6words="X"
-    elif info.playermove==5:
-        if info.board[4]==0:
-            if info.board[2]==0:
-                info.b3state="disabled"
-                if info.player==1:
-                    info.b3words="O"
-                else:
-                    info.b3words="X"
-                info.board[2]=info.computer
-            elif info.board[8]==0:
-                info.b9state="disabled"
-                if info.player==1:
-                    info.b9words="O"
-                else:
-                    info.b9words="X"
-                info.board[8]=info.computer
-        else:
-            info.board[3]=info.computer
-            info.b4state='disabled'
-            if info.player==1:
-                info.b4words="O"
-            else:
-                info.b4words="X"
-    elif info.playermove==7:
-        if info.board[4]==0:
-            if info.board[6]==0:
-                info.b7state="disabled"
-                if info.player==1:
-                    info.b7words="O"
-                else:
-                    info.b7words="X"
-                info.board[6]=info.computer
-            elif info.board[8]==0:
-                info.b9state="disabled"
-                if info.player==1:
-                    info.b9words="O"
-                else:
-                    info.b9words="X"
-                info.board[8]=info.computer
-        else:
-            info.board[1]=info.computer
-            info.b2state='disabled'
-            if info.player==1:
-                info.b2words="O"
-            else:
-                info.b2words="X"
-    elif info.playermove==4:
-        info.center=True
+def move(x):
+    info.board[x]=info.computer
+    if x==0:
         info.b1state="disabled"
         if info.player==1:
             info.b1words="O"
         else:
             info.b1words="X"
-        info.board[0]=info.computer
+    elif x==1:
+        info.b2state="disabled"
+        if info.player==1:
+            info.b2words="O"
+        else:
+            info.b2words="X"
+    elif x==2:
+        info.b3state="disabled"
+        if info.player==1:
+            info.b3words="O"
+        else:
+            info.b3words="X"
+    if x==3:
+        info.b4state="disabled"
+        if info.player==1:
+            info.b4words="O"
+        else:
+            info.b4words="X"
+    elif x==4:
+        info.b5state="disabled"
+        if info.player==1:
+            info.b5words="O"
+        else:
+            info.b5words="X"
+    elif x==5:
+        info.b6state="disabled"
+        if info.player==1:
+            info.b6words="O"
+        else:
+            info.b6words="X"
+    elif x==6:
+        info.b7state="disabled"
+        if info.player==1:
+            info.b7words="O"
+        else:
+            info.b7words="X"
+    elif x==7:
+        info.b8state="disabled"
+        if info.player==1:
+            info.b8words="O"
+        else:
+            info.b8words="X"
+    elif x==8:
+        info.b9state="disabled"
+        if info.player==1:
+            info.b9words="O"
+        else:
+            info.b9words="X"
+def boardread():
+    result=[]
+    if info.board[0]==info.player:
+        result=[0]
+    if info.board[1]==info.player:
+        result=result+[1]
+    if info.board[2]==info.player:
+        result=result+[2]
+    if info.board[3]==info.player:
+        result=result+[3]
+    if info.board[4]==info.player:
+        result=result+[4]
+    if info.board[5]==info.player:
+        result=result+[5]
+    if info.board[6]==info.player:
+        result=result+[6]
+    if info.board[7]==info.player:
+        result=result+[7]
+    if info.board[8]==info.player:
+        result=result+[8]
+    return result
+def logic():
+    if info.turn==1:
+        if info.playermove==4:
+            info.center=True
+            move(0)
+        else:
+            info.center=False
+            move(4)
+    else:
+        board=boardread()
+        if info.center==True:
+            if 0 in board and info.board[8]==0:
+                move(8)
+            elif 1 in board and info.board[7]==0:
+                move(7)
+            elif 2 in board and info.board[6]==0:
+                move(6)
+            elif 3 in board and info.board[5]==0:
+                move(5)
+            elif 5 in board and info.board[3]==0:
+                move(3)
+            elif 6 in board and info.board[2]==0:
+                move(2)
+            elif 7 in board and info.board[1]==0:
+                move(1)
+            elif 8 in board and info.board[0]==0:
+                move(0)
+            elif 0 in board and 1 in board and info.board[2]==0:
+                move(2)
+            elif 0 in board and 3 in board and info.board[6]==0:
+                move(6)
+            elif 2 in board and 1 in board and info.board[0]==0:
+                move(0)
+            elif 2 in board and 5 in board and info.board[8]==0:
+                move(8)
+            elif 8 in board and 5 in board and info.board[2]==0:
+                move(2)
+            elif 8 in board and 7 in board and info.board[6]==0:
+                move(6)
+            elif 6 in board and 7 in board and info.board[8]==0:
+                move(8)
+            elif 6 in board and 3 in board and info.board[3]==0:
+                move(3)
+            else:
+                if info.board[3]==0:
+                    move(3)
+                if info.board[1]==0:
+                    move(1)
+        else:
+            if 0 in board and info.board[1]==0:
+                move(1)
+            elif 0 in board and info.board[3]==0:
+                move(3)
+            elif 2 in board and info.board[1]==0:
+                move(1)
+            elif 2 in board and info.board[3]==0:
+                move(3)
+            elif 6 in board and info.board[3]==0:
+                move(3)
+            elif 6 in board and info.board[7]==0:
+                move(7)
+            elif 8 in board and info.board[7]==0:
+                move(7)
+            elif 8 in board and info.board[5]==0:
+                move(5)
+            elif 0 in board and 1 in board and info.board[2]==0:
+                move(2)
+            elif 0 in board and 3 in board and info.board[6]==0:
+                move(6)
+            elif 2 in board and 1 in board and info.board[0]==0:
+                move(0)
+            elif 2 in board and 5 in board and info.board[8]==0:
+                move(8)
+            elif 8 in board and 5 in board and info.board[2]==0:
+                move(2)
+            elif 8 in board and 7 in board and info.board[6]==0:
+                move(6)
+            elif 6 in board and 7 in board and info.board[8]==0:
+                move(8)
+            elif 6 in board and 3 in board and info.board[3]==0:
+                move(3)
+            else:
+                move(0)
 
 def action(com):
     info.playermove=com
@@ -307,7 +227,7 @@ def action(com):
             else:
                 info.b1words=''
                 info.b3words=''
-                info.words='I will go first'
+                info.words='you may go first'
                 info.player=1
                 info.computer=2
                 info.gamestart=True
@@ -319,7 +239,7 @@ def action(com):
             else:
                 info.b1words=''
                 info.b3words=''
-                info.words='I will go first'
+                info.words='you may go first'
                 info.player=2
                 info.computer=1
                 info.gamestart=True
@@ -328,6 +248,7 @@ def action(com):
         else:
             screenwrite()
     else:
+        info.turn=info.turn+1
         if com==0:
             info.board[0]=info.player
             info.b1state="disabled"
@@ -444,6 +365,5 @@ def prescreenwrite():
 prescreenwrite()
 
 root.mainloop()
-
 
 
