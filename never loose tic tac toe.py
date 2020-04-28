@@ -9,7 +9,7 @@ with open('tic and tacs.jpg','wb') as wf:
     wf.write(pic)
 
 root=Tk()
-root.title('never loose')
+root.title('never lose')
 root.geometry('500x500')
 root.resizable(False,False)
 
@@ -47,7 +47,7 @@ class info:
     center=False
     gamestart=False
     player=0
-    computer=0
+    computer=3
     board=[0,0,0,0,0,0,0,0,0]
     playermove=0
 
@@ -107,6 +107,7 @@ def move(x):
             info.b9words="O"
         else:
             info.b9words="X"
+
 def boardread():
     result=[]
     if info.board[0]==info.player:
@@ -128,6 +129,7 @@ def boardread():
     if info.board[8]==info.player:
         result=result+[8]
     return result
+
 def logic():
     if info.turn==1:
         if info.playermove==4:
@@ -177,7 +179,31 @@ def logic():
                 if info.board[1]==0:
                     move(1)
         else:
-            if 0 in board and info.board[1]==0:
+            if 0 in board and 1 in board and info.board[2]==0:
+                move(2)
+            elif 0 in board and 3 in board and info.board[6]==0:
+                move(6)
+            elif 2 in board and 1 in board and info.board[0]==0:
+                move(0)
+            elif 2 in board and 5 in board and info.board[8]==0:
+                move(8)
+            elif 8 in board and 5 in board and info.board[2]==0:
+                move(2)
+            elif 8 in board and 7 in board and info.board[6]==0:
+                move(6)
+            elif 6 in board and 7 in board and info.board[8]==0:
+                move(8)
+            elif 6 in board and 3 in board and info.board[0]==0:
+                move(0)
+            elif 6 in board and 8 in board and info.board[7]==0:
+                move(7)
+            elif 6 in board and 0 in board and info.board[3]==0:
+                move(3)
+            elif 8 in board and 2 in board and info.board[5]==0:
+                move(5)
+            elif 0 in board and 2 in board and info.board[1]==0:
+                move(1)
+            elif 0 in board and info.board[1]==0:
                 move(1)
             elif 0 in board and info.board[3]==0:
                 move(3)
@@ -193,24 +219,78 @@ def logic():
                 move(7)
             elif 8 in board and info.board[5]==0:
                 move(5)
-            elif 0 in board and 1 in board and info.board[2]==0:
-                move(2)
-            elif 0 in board and 3 in board and info.board[6]==0:
-                move(6)
-            elif 2 in board and 1 in board and info.board[0]==0:
-                move(0)
-            elif 2 in board and 5 in board and info.board[8]==0:
-                move(8)
-            elif 8 in board and 5 in board and info.board[2]==0:
-                move(2)
-            elif 8 in board and 7 in board and info.board[6]==0:
-                move(6)
-            elif 6 in board and 7 in board and info.board[8]==0:
-                move(8)
-            elif 6 in board and 3 in board and info.board[3]==0:
-                move(3)
             else:
-                move(0)
+                if info.board[0]==0:
+                    move(0)
+                elif info.board[1]==0:
+                    move(1)
+                elif info.board[2]==0:
+                    move(2)
+                elif info.board[3]==0:
+                    move(3)
+                elif info.board[5]==0:
+                    move(5)
+                elif info.board[6]==0:
+                    move(6)
+                elif info.board[7]==0:
+                    move(7)
+                elif info.board[8]==0:
+                    move(8)
+def wincheck():
+    computer=info.computer
+    if info.board[0]==computer:
+        if info.board[1]==computer and info.board[2]==computer:
+            return True
+        elif info.board[4]==computer and info.board[8]==computer:
+            return True
+        elif info.board[3]==computer and info.board[6]==computer:
+            return True
+    elif info.board[1]==computer and info.board[4]==computer and info.board[7]==computer:
+        return True
+    elif info.board[2]==computer:
+        if info.board[4]==computer and info.board[6]==computer:
+            return True
+        elif info.board[5]==computer and info.board[8]==computer:
+            return True
+    elif info.board[3]==computer and info.board[4]==computer and info.board[5]==computer:
+        return True
+    elif info.board[6]==computer and info.board[7]==computer and info.board[8]==computer:
+        return True
+    else:
+        return False
+def restart():
+    global background_label
+    info.b1state="normal"
+    info.b2state="normal"
+    info.b3state="normal"
+    info.b4state="normal"
+    info.b5state="normal"
+    info.b6state="normal"
+    info.b7state="normal"
+    info.b8state="normal"
+    info.b9state="normal"
+
+    info.b1words='yes'
+    info.b2words=''
+    info.b3words='no'
+    info.b4words=''
+    info.b5words=''
+    info.b6words=''
+    info.b7words=''
+    info.b8words=''
+    info.b9words=''
+
+    info.words="you have lost.\n\ndo you want to play again?"
+
+    info.turn=0
+    info.center=False
+    info.gamestart=False
+    info.player=0
+    info.computer=0
+    info.board=[0,0,0,0,0,0,0,0,0]
+    info.playermove=0
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+    prescreenwrite()
 
 def action(com):
     info.playermove=com
@@ -229,7 +309,7 @@ def action(com):
                 info.b3words=''
                 info.words='you may go first'
                 info.player=1
-                info.computer=2
+                info.computer=-1
                 info.gamestart=True
         elif com==2:
             if info.player==0:
@@ -240,7 +320,7 @@ def action(com):
                 info.b1words=''
                 info.b3words=''
                 info.words='you may go first'
-                info.player=2
+                info.player=-1
                 info.computer=1
                 info.gamestart=True
         if info.player==0 or info.player==3:
@@ -313,8 +393,13 @@ def action(com):
             elif info.player==2:
                 info.b9words="O"
         logic()
+        win=wincheck()
         info.words=str(info.board)
-        screenwrite()
+        if win==True:
+            restart()
+        else:
+            screenwrite()
+
 def screenwrite():
     global textbox
     button_1 = Button(root,state=info.b1state, bg='#fff', text=info.b1words,width=10,height=5, padx=10, pady=10,command= lambda: action(0))
@@ -365,5 +450,3 @@ def prescreenwrite():
 prescreenwrite()
 
 root.mainloop()
-
-
